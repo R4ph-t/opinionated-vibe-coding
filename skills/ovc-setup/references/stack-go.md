@@ -1,0 +1,49 @@
+# Go Stack Rules
+
+Additional rules for Go projects.
+
+## Error Handling
+- Check every error. Do not use `_` to discard errors unless there is a documented reason.
+- Return errors up the call stack with added context using `fmt.Errorf("doing thing: %w", err)`.
+- Use sentinel errors (`var ErrNotFound = errors.New(...)`) for errors that callers need to check.
+- Do not panic in library code. Reserve panic for truly unrecoverable situations in main or init.
+
+## Interfaces
+- Define interfaces at the point of use, not at the point of implementation.
+- Keep interfaces small. One or two methods is ideal.
+- Accept interfaces, return concrete types.
+
+## Project Layout
+- Follow the standard Go project layout conventions. `cmd/` for entry points, `internal/` for private packages.
+- Do not use a `pkg/` directory unless the code is genuinely intended for external consumption.
+- Group by domain, not by technical role. `internal/order/` is better than `internal/handlers/`, `internal/services/`, `internal/repositories/` for a single domain.
+
+## Naming
+- Use short, clear variable names. `r` for a reader, `ctx` for context, `err` for error.
+- Exported names should be descriptive without stuttering: `order.Service`, not `order.OrderService`.
+- Avoid getters. Use `user.Name()`, not `user.GetName()`.
+- Acronyms are all caps: `HTTPClient`, `userID`, `parseJSON`.
+
+## Concurrency
+- Do not start goroutines without a clear plan for how they stop.
+- Use `context.Context` for cancellation and timeouts. Pass it as the first argument.
+- Protect shared state with mutexes or use channels. Prefer channels for coordination, mutexes for protecting data.
+- Use `errgroup` for managing groups of goroutines that return errors.
+
+## Dependencies
+- Prefer the standard library. Go's standard library is extensive and well-designed.
+- Vendor or pin dependencies with `go.sum`. Run `go mod tidy` to keep `go.mod` clean.
+- Avoid dependencies with large transitive dependency trees for simple functionality.
+
+## Testing
+- Use table-driven tests for functions with multiple input/output combinations.
+- Use `testify` or the standard `testing` package. Do not mix assertion libraries.
+- Use `t.Helper()` in test helper functions so failure messages point to the right line.
+- Name test cases descriptively: `TestCreateOrder_InvalidInput_ReturnsError`.
+
+## Common Packages to Prefer
+- HTTP routing: check what the project uses (standard `net/http`, chi, echo, gin)
+- Configuration: `envconfig` or `viper` (check project)
+- Logging: `slog` (standard library, Go 1.21+) or `zerolog`
+- Database: `sqlx` or `pgx` for PostgreSQL, standard `database/sql` interface
+- Testing: standard `testing` package, `testify` for assertions

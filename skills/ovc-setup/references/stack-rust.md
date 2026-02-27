@@ -1,0 +1,54 @@
+# Rust Stack Rules
+
+Additional rules for Rust projects.
+
+## Error Handling
+- Use `Result<T, E>` for operations that can fail. Do not use `unwrap()` or `expect()` in production code paths.
+- Define domain-specific error types using `thiserror` for libraries or `anyhow` for applications.
+- Use the `?` operator to propagate errors. Add context with `.context()` or `.with_context()` from `anyhow`.
+- Reserve `panic!` for programmer errors (invariant violations), never for expected runtime conditions.
+
+## Ownership and Borrowing
+- Prefer borrowing (`&T`) over cloning. Clone only when ownership transfer is genuinely needed.
+- Use `&str` in function parameters, not `String`, unless the function needs to own the data.
+- Use `Cow<'_, str>` when a function might or might not need to allocate.
+- Keep lifetimes explicit when they clarify intent. Rely on elision when the compiler's defaults are correct.
+
+## Types and Traits
+- Use strong types over primitives. `UserId(u64)` is better than `u64` for a user ID.
+- Derive standard traits (`Debug`, `Clone`, `PartialEq`) unless there's a reason not to.
+- Implement `Display` for types that users or logs will see. Use `Debug` for developer-facing output.
+- Prefer composition over deep trait hierarchies.
+
+## Project Layout
+- Use Cargo workspace for multi-crate projects.
+- Keep `main.rs` or `lib.rs` thin. Delegate to modules immediately.
+- Organize modules by domain: `src/order/mod.rs`, not a flat `src/` with dozens of files.
+- Use `mod.rs` or the `module_name.rs` + `module_name/` pattern consistently. Do not mix.
+
+## Async
+- Use `tokio` as the async runtime unless the project has a reason to use something else.
+- Do not block the async executor. Use `tokio::task::spawn_blocking` for CPU-heavy or synchronous I/O work.
+- Prefer `async fn` in trait definitions (Rust 1.75+) over `#[async_trait]` where possible.
+- Use `tokio::select!` for concurrent operations with cancellation.
+
+## Dependencies
+- Check crate quality before adding: download count, maintenance activity, dependency footprint.
+- Pin Cargo.lock in binary projects. Do not pin in libraries.
+- Prefer crates from well-known ecosystems (tokio, serde, tower) over niche alternatives.
+- Run `cargo audit` regularly to check for vulnerabilities.
+
+## Testing
+- Use `#[cfg(test)]` modules in the same file for unit tests.
+- Use a separate `tests/` directory for integration tests.
+- Use `assert_eq!` and `assert_ne!` over `assert!` for better error messages.
+- Test error cases, not just happy paths. Use `assert!(result.is_err())` or pattern match on specific errors.
+
+## Common Crates to Prefer
+- Serialization: `serde` with `serde_json`
+- HTTP server: check project (axum, actix-web, rocket)
+- HTTP client: `reqwest`
+- Database: `sqlx` (async, compile-time checked queries) or `diesel`
+- Logging: `tracing` (structured, async-aware)
+- CLI: `clap`
+- Configuration: `config` or `figment`

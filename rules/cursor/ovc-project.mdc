@@ -1,0 +1,58 @@
+---
+description: "Project-specific rules template. Customize this file with your tech stack, file structure, naming conventions, API design patterns, and dependency preferences."
+alwaysApply: true
+---
+
+# Project-Specific Rules
+
+[CUSTOMIZE: Replace the commented-out examples below with your actual project decisions.]
+
+## Tech Stack
+<!-- 
+- Runtime: Node.js 20+
+- Framework: Hono
+- Database: PostgreSQL with Drizzle ORM
+- Validation: Zod
+- Testing: Vitest
+- Package manager: pnpm
+-->
+
+## File Structure
+<!--
+- API routes: /src/routes/
+- Database schemas: /src/db/
+- Shared utilities: /src/lib/
+- Types: /src/types/
+- Tests: colocated with source files as *.test.ts
+-->
+
+## Naming Conventions
+<!--
+- Files: kebab-case
+- Functions: camelCase
+- Types/Interfaces: PascalCase
+- Constants: SCREAMING_SNAKE_CASE
+- Database tables: snake_case
+- API endpoints: kebab-case
+-->
+
+## API Design
+<!--
+- All API routes have a corresponding schema in /src/schemas/
+- Validate all inputs with Zod before processing
+- Never return raw database objects, always map to response types
+- Error responses follow the format: { error: string, code: string }
+- Use appropriate HTTP status codes
+-->
+
+## Dependencies
+<!--
+Preferred:
+- HTTP: use the built-in fetch API, not axios
+- Dates: use date-fns, not moment
+- Validation: use zod
+
+Banned:
+- lodash (use native JS methods)
+- moment (deprecated, use date-fns)
+-->

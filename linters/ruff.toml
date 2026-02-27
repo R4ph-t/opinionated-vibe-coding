@@ -1,0 +1,49 @@
+# Opinionated Ruff configuration for Python projects.
+# Copy to your project root as ruff.toml or add [tool.ruff] to pyproject.toml.
+
+target-version = "py312"
+line-length = 100
+
+[lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort
+  "N",    # pep8-naming
+  "UP",   # pyupgrade
+  "B",    # flake8-bugbear
+  "A",    # flake8-builtins
+  "S",    # flake8-bandit (security)
+  "T20",  # flake8-print
+  "SIM",  # flake8-simplify
+  "TCH",  # flake8-type-checking
+  "RUF",  # ruff-specific rules
+  "PTH",  # flake8-use-pathlib
+  "ERA",  # eradicate (commented-out code)
+  "RET",  # flake8-return
+  "ARG",  # flake8-unused-arguments
+  "C4",   # flake8-comprehensions
+  "PIE",  # flake8-pie
+  "PT",   # flake8-pytest-style
+]
+
+ignore = [
+  "S101",   # allow assert in tests
+  "ARG001", # allow unused function arguments (common in frameworks)
+]
+
+[lint.per-file-ignores]
+"tests/**/*.py" = [
+  "S101",   # assert is fine in tests
+  "ARG",    # unused arguments common in fixtures
+  "S106",   # hardcoded passwords fine in tests
+]
+
+[lint.isort]
+known-first-party = []  # [CUSTOMIZE: add your package name]
+
+[format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
