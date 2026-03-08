@@ -1,0 +1,40 @@
+# Java / Kotlin Stack Rules
+
+Additional rules for Java and Kotlin projects.
+
+## Language Preferences
+- Prefer Kotlin over Java for new files when the project supports both.
+- In Kotlin, prefer `val` over `var`. Immutability by default.
+- In Java, use records for DTOs and data carriers. Use `final` on fields that should not change.
+
+## Null Safety
+- In Kotlin, do not use `!!` (force-unwrap). Handle nullability explicitly with `?.`, `?:`, or `let`.
+- In Java, use `Optional` for return types that may be absent. Do not use `Optional` as a method parameter.
+- Annotate nullable parameters and return types with `@Nullable` / `@NonNull` when not using Kotlin.
+
+## Imports and Structure
+- No wildcard imports.
+- One public class per file.
+- Follow the project's package naming convention (reverse domain).
+- Use dependency injection (Spring, Dagger, Koin) instead of static singletons.
+
+## Error Handling
+- Use specific exception types. Do not catch `Exception` or `Throwable` unless at the top-level handler.
+- Create custom exception classes for domain errors.
+- In Kotlin, prefer `Result` or sealed classes over throwing exceptions for expected failures.
+
+## Build
+- Use Gradle (Kotlin DSL preferred) or Maven. Match the project's existing build system.
+- Pin dependency versions. Do not use dynamic versions (`+`, `LATEST`).
+- Keep build files clean. Extract common config into convention plugins or parent POMs.
+
+## Testing
+- Use JUnit 5 for Java, kotest or JUnit 5 for Kotlin.
+- Use constructor injection to make classes testable without reflection.
+- Use Testcontainers for integration tests that need databases or external services.
+
+## Common Libraries to Prefer
+- HTTP client: the project's existing client (OkHttp, Ktor client, RestTemplate)
+- Serialization: Jackson or kotlinx.serialization
+- Validation: Jakarta Validation (Bean Validation) or the framework's built-in
+- Logging: SLF4J with the project's binding (Logback, Log4j2)

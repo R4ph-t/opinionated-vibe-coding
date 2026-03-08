@@ -1,0 +1,89 @@
+{
+  "skill_name": "ovc-audit",
+  "models": [
+    "claude-sonnet-4-6",
+    "gpt-5.4",
+    "gemini-3.1-pro-preview"
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Please do an OVC audit on my Node/Express API. It has routes in /routes, models in /models using Prisma, and a React frontend in /client. I'm worried about tech debt and security issues. The entry point is server.js.",
+      "expected_output": "A full structured audit report covering all applicable sections: Summary, Critical Issues, Architecture, Code Quality, Security, Testing, Dependencies, Error Handling, Environment & Config, File Organization, API Design, Data Layer, Accessibility, What Looks Accidental, Recommendations, and Go Deeper. The agent should scan the project structure, detect the full stack (Node/Express API + Prisma + React frontend), load all four checklists (core, api, data, frontend), and produce findings with file paths and severity levels.",
+      "files": [
+        "evals/fixtures/node-express-prisma/server.js",
+        "evals/fixtures/node-express-prisma/package.json",
+        "evals/fixtures/node-express-prisma/.gitignore",
+        "evals/fixtures/node-express-prisma/routes/users.js",
+        "evals/fixtures/node-express-prisma/routes/products.js",
+        "evals/fixtures/node-express-prisma/models/user.js",
+        "evals/fixtures/node-express-prisma/prisma/schema.prisma",
+        "evals/fixtures/node-express-prisma/client/package.json",
+        "evals/fixtures/node-express-prisma/client/src/App.tsx",
+        "evals/fixtures/node-express-prisma/client/src/components/UserList.tsx",
+        "evals/fixtures/node-express-prisma/client/src/components/ContactForm.tsx"
+      ],
+      "assertions": [
+        "The agent reads the project root directory listing and entry point (server.js) before generating findings",
+        "The agent identifies and loads all four audit checklists: audit-core.md, audit-api.md, audit-data.md, and audit-frontend.md based on the detected stack",
+        "The report includes an 'API Design' section with findings specific to Express route conventions",
+        "The report includes a 'Data Layer' section referencing Prisma-specific concerns such as N+1 queries or unbounded fetches",
+        "The report includes an 'Accessibility' section covering the React frontend",
+        "The report ends with a 'Go Deeper' section listing relevant follow-up skills like ovc-dry-check, ovc-test-coverage, and ovc-api-review",
+        "Each finding includes a severity label (CRITICAL, HIGH, MEDIUM, or LOW) and a specific file path or area"
+      ]
+    },
+    {
+      "id": 2,
+      "turns": [
+        "Can you review my codebase for me?",
+        "It's a Python Flask REST API with SQLAlchemy models. No frontend. I'm mainly concerned about security and whether we have any obvious tech debt. Entry point is app.py."
+      ],
+      "expected_output": "After the user clarifies the stack and concerns, the agent performs a targeted audit of the Flask/SQLAlchemy project. It loads audit-core.md, audit-api.md, and audit-data.md (but NOT audit-frontend.md since there is no frontend). The report focuses on security and tech debt, includes findings with severity levels and file references, and omits the Accessibility section.",
+      "files": [
+        "evals/fixtures/flask-sqlalchemy/app.py",
+        "evals/fixtures/flask-sqlalchemy/requirements.txt",
+        "evals/fixtures/flask-sqlalchemy/.gitignore",
+        "evals/fixtures/flask-sqlalchemy/models/user.py",
+        "evals/fixtures/flask-sqlalchemy/models/product.py",
+        "evals/fixtures/flask-sqlalchemy/routes/users.py",
+        "evals/fixtures/flask-sqlalchemy/routes/products.py"
+      ],
+      "assertions": [
+        "After the first vague message, the agent asks a clarifying question about the project stack, language, or entry point before proceeding",
+        "After the user's clarification, the agent proceeds with the audit without asking further unnecessary questions",
+        "The agent loads audit-core.md, audit-api.md, and audit-data.md but does NOT load audit-frontend.md since no frontend was mentioned",
+        "The report includes a 'Security' section with Flask/Python-specific checks such as input validation and SQL parameterization",
+        "The report includes a 'Data Layer' section referencing SQLAlchemy-specific concerns",
+        "The Accessibility section is omitted from the report",
+        "The 'Recommendations' section lists the top 5 prioritized fixes"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What's wrong with my code? I have a Next.js app with no backend — just API routes in /pages/api and a Supabase client. I suspect there are hardcoded secrets, missing error handling, and accessibility problems in the components.",
+      "expected_output": "A comprehensive audit report for a Next.js project using Supabase. The agent detects the frontend (Next.js with .tsx files) and API layer (/pages/api routes) but no traditional ORM/database layer. It loads audit-core.md, audit-frontend.md, and audit-api.md. The report specifically addresses hardcoded secrets in the Security section, error handling patterns, and accessibility issues in frontend components. The 'What Looks Accidental' section surfaces any default or unintentional decisions.",
+      "files": [
+        "evals/fixtures/nextjs-supabase/package.json",
+        "evals/fixtures/nextjs-supabase/next.config.js",
+        "evals/fixtures/nextjs-supabase/.gitignore",
+        "evals/fixtures/nextjs-supabase/lib/supabase.ts",
+        "evals/fixtures/nextjs-supabase/pages/index.tsx",
+        "evals/fixtures/nextjs-supabase/pages/api/users.ts",
+        "evals/fixtures/nextjs-supabase/pages/api/products.ts",
+        "evals/fixtures/nextjs-supabase/components/UserCard.tsx",
+        "evals/fixtures/nextjs-supabase/components/ContactForm.tsx",
+        "evals/fixtures/nextjs-supabase/styles/Home.module.css"
+      ],
+      "assertions": [
+        "The agent scans the project structure and identifies Next.js as the stack, triggering audit-frontend.md and audit-api.md to be loaded",
+        "The agent does NOT load audit-data.md since no traditional ORM or migration files are present",
+        "The 'Security' section explicitly checks for hardcoded Supabase keys or tokens and references the pattern of searching for strings like 'sk-', 'key-', or 'token'",
+        "The 'Error Handling' section identifies specific anti-patterns such as swallowed errors or missing try/catch in async API route handlers",
+        "The 'Accessibility' section covers Next.js/React-specific issues such as missing alt text, unlabeled inputs, or non-semantic interactive elements",
+        "The 'What Looks Accidental' section is present and contains at least one concrete observation about a likely unintentional decision",
+        "The report is direct and does not soften findings with qualifiers like 'this might be intentional'"
+      ]
+    }
+  ]
+}

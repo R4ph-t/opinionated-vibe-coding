@@ -1,0 +1,37 @@
+# React / Frontend Stack Rules
+
+Additional rules for React and frontend projects.
+
+## Component Structure
+- Co-locate components, styles, and tests in the same directory.
+- Extract reusable UI into a shared components directory. Page-specific UI stays with the page.
+- One component per file. Name the file after the component.
+- Prefer function components. Do not use class components for new code.
+
+## State Management
+- Keep state as local as possible: component state first, then context, then global store.
+- Do not prop-drill past two levels. Use context, composition, or a state library instead.
+- Derive values from existing state instead of storing redundant state.
+- Co-locate state with the components that use it.
+
+## Accessibility
+- All images must have meaningful `alt` text. Decorative images use `alt=""`.
+- All form inputs must have associated labels.
+- Use semantic HTML elements (`nav`, `main`, `section`, `button`, `header`, `footer`) over generic `div` and `span`.
+- Interactive elements must be keyboard-accessible.
+
+## Performance
+- Memoize expensive computations with `useMemo`. Do not wrap everything in `useMemo`/`useCallback` by default.
+- Lazy-load routes and heavy components with `React.lazy` or the framework's equivalent.
+- Use the `key` prop correctly in lists. Never use array index as key for dynamic lists.
+- Avoid creating new objects or functions in render unless necessary.
+
+## Data Fetching
+- Handle loading, error, and empty states for every async data fetch.
+- Use the framework's data fetching pattern (Next.js server components, React Query, SWR) instead of raw `useEffect` + `fetch`.
+- Do not fetch data in components that are rendered conditionally without cleanup.
+
+## Styling
+- Follow the project's existing styling approach (CSS modules, Tailwind, styled-components, etc.).
+- Do not mix styling approaches in the same project.
+- Use design tokens or CSS variables for colors, spacing, and typography.

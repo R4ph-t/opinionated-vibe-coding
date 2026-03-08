@@ -54,6 +54,22 @@ If you are unsure about an API, say so and look it up rather than hallucinating.
 - Set secure defaults. CORS, rate limiting, HTTPS, secure headers.
 - If you're unsure about a security implication, flag it rather than guessing.
 
+### Error Handling and Logging
+- Never swallow errors. No empty catch blocks, no bare `except: pass`, no ignored error returns.
+- Use structured error types with context, not generic Error/Exception with string messages.
+- Log errors with context: what operation was attempted, what input triggered it, what failed.
+- Use structured logging (JSON) in production. Human-readable format in development.
+- Never log secrets, tokens, passwords, or PII.
+- Do not expose internal error details to clients. Return user-safe messages; log the full trace server-side.
+
+### Database Safety
+- Use migrations for all schema changes. Never run raw DDL in production.
+- Migrations must be reversible unless explicitly approved otherwise.
+- Add indexes for columns used in WHERE clauses and foreign keys.
+- Never delete columns or tables without confirming no code references them.
+- Use transactions for multi-step data operations.
+- Validate data at the application layer before writing; do not rely solely on database constraints.
+
 ### Testing
 - After modifying existing code, run the existing test suite to check for regressions.
 - When adding new functionality, write tests for it.

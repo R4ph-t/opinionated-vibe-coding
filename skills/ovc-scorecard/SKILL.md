@@ -25,7 +25,7 @@ Eight categories, each mapped to the OVC principles they reflect:
 | Dependencies | 4 (Don't Reinvent), 5 (RTFM) | Uses established packages, no hand-rolled solutions, correct API usage, no deprecated methods |
 | Testing | 6 (No Regress) | Tests exist, critical paths covered, tests assert real behavior, suite passes |
 | Tooling | 7 (Your Rules), 10 (Agent Upgraded) | Rules file present, linter configured, strict type checking, MCP or tool integrations |
-| Error Handling | 2 (Fundamentals) | Consistent pattern, no swallowed errors, proper status codes, context in messages |
+| Error Handling | 2 (Fundamentals) | Consistent pattern, no swallowed errors, proper status codes, context in messages, structured logging, no leaked internals |
 | Deployment Readiness | 12 (Ship It) | Env var handling, config management, Dockerfile/IaC/CI present, no secrets in repo |
 
 Principles 3 (Know Your Assistant), 8 (Plan), 9 (Audit Often), and 11 (Take the Wheel) are process/behavior principles that can't be scored from code alone. Note whether the repo has tooling support for them (rules file, audit skills, plan review) but do not score them numerically.

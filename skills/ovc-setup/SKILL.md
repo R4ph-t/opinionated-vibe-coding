@@ -52,6 +52,11 @@ Available stack references:
 - [references/stack-python.md](references/stack-python.md) for Python projects
 - [references/stack-go.md](references/stack-go.md) for Go projects
 - [references/stack-rust.md](references/stack-rust.md) for Rust projects
+- [references/stack-react.md](references/stack-react.md) for React/frontend projects
+- [references/stack-ruby.md](references/stack-ruby.md) for Ruby projects
+- [references/stack-jvm.md](references/stack-jvm.md) for Java/Kotlin projects
+- [references/stack-dotnet.md](references/stack-dotnet.md) for C#/.NET projects
+- [references/stack-swift.md](references/stack-swift.md) for Swift projects
 
 ### 4. Configure the linter (if requested)
 

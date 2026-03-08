@@ -1,0 +1,44 @@
+---
+description: "C# and .NET rules: nullable reference types, async patterns, dependency injection, EF Core, configuration."
+globs: "*.cs,*.csproj"
+alwaysApply: false
+---
+
+# C# / .NET Rules
+
+## Language and Types
+- Enable nullable reference types (`<Nullable>enable</Nullable>`). Do not suppress warnings with `!` without justification.
+- Use file-scoped namespaces.
+- Use records for immutable data transfer objects.
+- Prefer `var` when the type is obvious from the right-hand side.
+
+## Async
+- Use `async`/`await` for all I/O operations.
+- Use `ConfigureAwait(false)` in library code. Omit it in application code (ASP.NET Core).
+- Do not use `.Result` or `.Wait()` on tasks. This causes deadlocks.
+- Return `Task` or `ValueTask`, not `void`, from async methods (except event handlers).
+
+## Dependency Injection
+- Use the built-in DI container. Register services in `Program.cs` or extension methods.
+- Prefer constructor injection. Do not use the service locator pattern.
+- Use `IOptions<T>` / `IOptionsSnapshot<T>` for configuration, not raw `IConfiguration` access.
+
+## Error Handling
+- Use custom exception types for domain errors.
+- Use middleware for global exception handling. Do not scatter try/catch in every controller action.
+- Return `ProblemDetails` for API error responses.
+
+## Entity Framework Core
+- Use migrations for all schema changes. Run `dotnet ef migrations add` and commit the migration files.
+- Use `AsNoTracking()` for read-only queries.
+- Do not expose `DbContext` outside the data layer. Use a repository or service abstraction.
+
+## Testing
+- Use xUnit, NUnit, or MSTest (match the project).
+- Use `WebApplicationFactory<T>` for integration tests.
+- Use NSubstitute or Moq for mocking. Prefer testing behavior over mocking internals.
+
+## Configuration
+- Use `appsettings.json` for defaults, environment variables for overrides.
+- Validate configuration at startup with `ValidateDataAnnotations()` or `ValidateOnStart()`.
+- Never hardcode connection strings or secrets.

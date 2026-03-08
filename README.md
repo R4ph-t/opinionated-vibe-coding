@@ -49,6 +49,12 @@ Copy the `skills/` directory into your project. Each skill follows the [Agent Sk
 - Say "check my dependencies" to trigger `ovc-dependency-check`.
 - Say "score this repo" to trigger `ovc-scorecard`.
 - Say "set up MCP" to trigger `ovc-mcp-setup`.
+- Say "check error handling" to trigger `ovc-error-handling`.
+- Say "test coverage gaps" to trigger `ovc-test-coverage`.
+- Say "performance check" to trigger `ovc-performance-check`.
+- Say "review my API" to trigger `ovc-api-review`.
+- Say "env check" to trigger `ovc-env-check`.
+- Say "accessibility review" to trigger `ovc-accessibility-review`.
 
 ## Repo structure
 
@@ -62,7 +68,12 @@ opinionated-vibe-coding/
 │   │   ├── ovc-stack-node.mdc     #   Node.js/TypeScript (globs: *.ts, *.js)
 │   │   ├── ovc-stack-python.mdc   #   Python (globs: *.py)
 │   │   ├── ovc-stack-go.mdc       #   Go (globs: *.go)
-│   │   └── ovc-stack-rust.mdc     #   Rust (globs: *.rs)
+│   │   ├── ovc-stack-rust.mdc     #   Rust (globs: *.rs)
+│   │   ├── ovc-stack-react.mdc    #   React/Frontend (globs: *.tsx, *.jsx)
+│   │   ├── ovc-stack-ruby.mdc     #   Ruby (globs: *.rb, *.erb)
+│   │   ├── ovc-stack-jvm.mdc      #   Java/Kotlin (globs: *.java, *.kt)
+│   │   ├── ovc-stack-dotnet.mdc   #   C#/.NET (globs: *.cs, *.csproj)
+│   │   └── ovc-stack-swift.mdc    #   Swift (globs: *.swift)
 │   ├── .cursorrules                # Cursor (legacy single file)
 │   ├── copilot-instructions.md     # GitHub Copilot
 │   ├── .windsurfrules              # Windsurf
@@ -76,7 +87,12 @@ opinionated-vibe-coding/
 │   │       ├── stack-node.md       # Node.js/TypeScript rules
 │   │       ├── stack-python.md     # Python rules
 │   │       ├── stack-go.md         # Go rules
-│   │       └── stack-rust.md       # Rust rules
+│   │       ├── stack-rust.md       # Rust rules
+│   │       ├── stack-react.md      # React/Frontend rules
+│   │       ├── stack-ruby.md       # Ruby rules
+│   │       ├── stack-jvm.md        # Java/Kotlin rules
+│   │       ├── stack-dotnet.md     # C#/.NET rules
+│   │       └── stack-swift.md      # Swift rules
 │   │
 │   ├── ovc-audit/                  # Full codebase audit
 │   │   ├── SKILL.md
@@ -100,7 +116,30 @@ opinionated-vibe-coding/
 │   │   └── references/
 │   │       └── scoring-rubric.md
 │   │
-│   └── ovc-mcp-setup/             # Set up MCP servers
+│   ├── ovc-mcp-setup/             # Set up MCP servers
+│   │   └── SKILL.md
+│   │
+│   ├── ovc-file-split/            # Split large files
+│   │   └── SKILL.md
+│   │
+│   ├── ovc-error-handling/        # Audit error handling patterns
+│   │   └── SKILL.md
+│   │
+│   ├── ovc-test-coverage/         # Find test coverage gaps
+│   │   └── SKILL.md
+│   │
+│   ├── ovc-performance-check/     # Find performance anti-patterns
+│   │   └── SKILL.md
+│   │
+│   ├── ovc-api-review/            # Review API design
+│   │   ├── SKILL.md
+│   │   └── references/
+│   │       └── api-checklist.md
+│   │
+│   ├── ovc-env-check/             # Audit environment config
+│   │   └── SKILL.md
+│   │
+│   └── ovc-accessibility-review/  # Review frontend accessibility
 │       └── SKILL.md
 │
 ├── linters/                        # Opinionated linter configs
@@ -110,7 +149,9 @@ opinionated-vibe-coding/
 └── guides/                         # Human-side guides
     ├── context-window-management.md
     ├── model-selection.md
-    └── when-to-take-the-wheel.md
+    ├── when-to-take-the-wheel.md
+    ├── prompt-engineering.md
+    └── code-review-with-agents.md
 ```
 
 ## The Twelve Principles

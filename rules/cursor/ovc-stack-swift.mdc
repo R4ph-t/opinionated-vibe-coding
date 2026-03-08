@@ -1,0 +1,44 @@
+---
+description: "Swift rules: value types, protocol-oriented design, async/await, optionals, error handling, testing."
+globs: "*.swift"
+alwaysApply: false
+---
+
+# Swift Rules
+
+## Types and Structure
+- Prefer structs over classes unless you need reference semantics or inheritance.
+- Use enums with associated values for modeling distinct states.
+- Use protocols to define contracts. Prefer protocol extensions over base classes.
+- Mark classes as `final` unless they are explicitly designed for subclassing.
+
+## Optionals
+- Never force-unwrap (`!`) optionals. Use `guard let`, `if let`, or `??` with a sensible default.
+- Use `guard` for early returns to reduce nesting.
+- Prefer `map`/`flatMap` on optionals for transformations.
+
+## Concurrency
+- Use Swift's structured concurrency (`async`/`await`, `TaskGroup`) over completion handlers.
+- Use `@MainActor` for UI updates.
+- Do not use `DispatchQueue.main.async` in new async code. Use `MainActor.run` instead.
+- Mark `Sendable` conformance explicitly on types shared across concurrency domains.
+
+## Error Handling
+- Use `do`/`catch` with typed errors. Do not use `try!` or `try?` without justification.
+- Create custom error types conforming to `Error` for domain-specific failures.
+- Propagate errors with `throws` rather than returning optional values to indicate failure.
+
+## Serialization
+- Use `Codable` for JSON serialization and deserialization.
+- Use `CodingKeys` when the API naming differs from Swift naming conventions.
+- Use `JSONDecoder`/`JSONEncoder` with `keyDecodingStrategy` for consistent casing.
+
+## Testing
+- Use XCTest or Swift Testing (match the project).
+- Use dependency injection (protocol-based) to make types testable.
+- Test both success and failure paths for throwing functions.
+
+## Common Patterns
+- Use `Result` type for operations that can fail when async/await is not suitable.
+- Use property wrappers (`@Published`, `@AppStorage`, `@Environment`) appropriately in SwiftUI.
+- Keep views small. Extract subviews when a view body exceeds ~40 lines.
