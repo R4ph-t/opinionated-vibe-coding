@@ -2,7 +2,7 @@
 name: ovc-env-check
 description: Audit environment variable usage and configuration hygiene. Finds undocumented vars, missing .env.example, hardcoded values, and missing validation. Use when the user wants to check their config setup, find missing env vars, or review secrets handling. Also trigger on "env check", "environment check", "check my config", "missing env vars", "secrets check", "config audit".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

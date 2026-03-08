@@ -2,7 +2,7 @@
 name: ovc-api-review
 description: Review API design for consistency, correctness, and completeness. Checks endpoint naming, HTTP methods, error responses, pagination, validation, and missing best practices. Use when the user wants to review their API, check endpoint design, or audit REST conventions. Also trigger on "API review", "review my endpoints", "API design check", "REST review", "endpoint audit".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

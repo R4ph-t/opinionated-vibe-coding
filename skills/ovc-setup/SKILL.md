@@ -2,7 +2,7 @@
 name: ovc-setup
 description: Set up Opinionated Vibe Coding in a project. Use when the user wants to initialize OVC, add agent rules, configure linters, or bootstrap their project with the OVC methodology. Triggers on phrases like "set up OVC", "add opinionated vibe coding", "configure agent rules", "initialize project rules".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

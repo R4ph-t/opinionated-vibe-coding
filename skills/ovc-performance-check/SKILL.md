@@ -2,7 +2,7 @@
 name: ovc-performance-check
 description: Find common performance anti-patterns in the codebase. Checks for N+1 queries, missing pagination, unbounded fetches, large bundle imports, blocking I/O, and missing indexes. Use when the user wants to optimize performance, find bottlenecks, or review efficiency. Also trigger on "performance check", "find bottlenecks", "performance review", "is this efficient", "slow", "optimize".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

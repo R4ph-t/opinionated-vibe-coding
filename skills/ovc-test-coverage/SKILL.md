@@ -2,7 +2,7 @@
 name: ovc-test-coverage
 description: Analyze test coverage gaps in the codebase. Maps critical code paths, cross-references them with existing tests, and identifies what's untested. Prioritizes gaps by risk. Use when the user wants to improve test coverage, find untested code, or figure out what to test next. Also trigger on "test coverage", "what's untested", "coverage gaps", "what should I test", "missing tests".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

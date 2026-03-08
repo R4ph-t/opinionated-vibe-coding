@@ -2,7 +2,7 @@
 name: ovc-dependency-check
 description: Audit project dependencies for outdated packages, known vulnerabilities, unused imports, and duplicated purpose. Use when the user asks to check dependencies, find outdated packages, audit for vulnerabilities, or clean up the dependency list. Also trigger on "dependency check", "npm audit", "outdated packages", "unused dependencies", "are my deps up to date".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

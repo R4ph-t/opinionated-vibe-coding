@@ -2,7 +2,7 @@
 name: ovc-mcp-setup
 description: Set up MCP (Model Context Protocol) servers to give the AI coding agent direct access to databases, documentation, APIs, and deployment platforms. Use when the user wants to enhance their agent's capabilities, connect tools, set up MCP, or give their agent access to external services. Also trigger on "set up MCP", "connect my database", "agent tools", "upgrade my agent", "add MCP server".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

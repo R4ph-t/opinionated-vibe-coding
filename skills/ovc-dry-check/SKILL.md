@@ -2,7 +2,7 @@
 name: ovc-dry-check
 description: Find DRY violations and duplicated logic in the codebase. Identifies copy-pasted code, repeated patterns, multiple implementations of the same functionality, and opportunities to extract shared modules. Use when the user asks to check for duplication, find repeated code, clean up the codebase, or refactor. Also trigger on "DRY check", "find duplicates", "duplicated code", "refactor for reuse".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

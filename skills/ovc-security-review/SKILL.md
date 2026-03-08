@@ -2,7 +2,7 @@
 name: ovc-security-review
 description: Run a security-focused review of the codebase or a specific change. Checks for hardcoded secrets, input validation gaps, SQL injection, auth issues, CORS misconfig, and dependency vulnerabilities. Use when the user asks for a security review, security audit, vulnerability check, or mentions concerns about security. Also trigger on "is this secure", "check for vulnerabilities", "security scan".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

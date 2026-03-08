@@ -2,7 +2,7 @@
 name: ovc-audit
 description: Run a full codebase audit following Opinionated Vibe Coding principles. Checks architecture, DRY violations, security issues, test coverage, dependency health, error handling, environment config, file organization, and accidental decisions. Conditionally audits API design, frontend accessibility, and data layer. Use when the user asks to audit their code, review codebase health, check for tech debt, or do a project review. Also trigger on "OVC audit", "codebase review", "what's wrong with my code", "tech debt check".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "2.0"
 license: MIT
 ---

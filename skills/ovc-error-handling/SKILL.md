@@ -2,7 +2,7 @@
 name: ovc-error-handling
 description: Audit error handling patterns across the codebase. Finds swallowed errors, inconsistent error types, missing logging context, and leaked internal details. Use when the user wants to review exception handling, find silent failures, or improve error consistency. Also trigger on "error handling check", "find swallowed errors", "error patterns", "exception handling review".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

@@ -2,7 +2,7 @@
 name: ovc-file-split
 description: Find oversized files in the codebase, recommend how to decompose them, and perform the refactoring. Identifies files with too many responsibilities, vague names, or excessive length and splits them into focused modules. Use when the user asks to break down large files, split a module, reduce file size, or decompose code. Also trigger on "file too big", "split this file", "break down files", "decompose module", "extract from file".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

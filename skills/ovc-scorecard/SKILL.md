@@ -2,7 +2,7 @@
 name: ovc-scorecard
 description: Rate a repository against Opinionated Vibe Coding principles. Produces a quantitative scorecard with 1-5 scores across eight categories and an overall grade. Use when the user wants a quick health check, wants to know where they stand, or wants to track improvement over time. Also trigger on "rate this repo", "score my codebase", "OVC scorecard", "how does my project measure up", "grade this project".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---

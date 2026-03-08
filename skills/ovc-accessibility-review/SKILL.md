@@ -2,7 +2,7 @@
 name: ovc-accessibility-review
 description: Review frontend code for accessibility issues. Checks images, forms, semantics, keyboard navigation, ARIA usage, and color. Use for any frontend project to ensure it meets WCAG guidelines. Also trigger on "accessibility review", "a11y check", "accessibility audit", "is this accessible", "WCAG check", "screen reader".
 metadata:
-  author: renderinc
+  author: r4ph-t
   version: "1.0"
 license: MIT
 ---
